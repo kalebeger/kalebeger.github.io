@@ -89,10 +89,19 @@ class PublicSiteTests(unittest.TestCase):
         self.assertTrue(any(link.get('target') == '_blank' for link in parsed.links))
         self.assertTrue(all(link['href'] == pdf for link in parsed.links))
 
-    def test_freas_hall_uses_local_css_placeholder_without_unverified_photo(self):
+    def test_freas_hall_uses_owned_optimized_photo_without_placeholder(self):
         source = (self.output / 'experience.html').read_text()
-        self.assertIn('experience-photo-pending', source)
-        self.assertIn('Freas Hall', source)
+        self.assertNotIn('experience-photo-pending', source)
+        self.assertNotIn('Photograph to come.', source)
+        self.assertIn('Photograph by Kaleb Eger.', source)
+        parsed = Page()
+        parsed.feed(source)
+        image = next(image for image in parsed.images if image['src'] == 'assets/media/freas-hall.jpg')
+        self.assertEqual((image['width'], image['height']), ('1600', '1000'))
+        payload = (self.output / image['src']).read_bytes()
+        self.assertTrue(payload.startswith(b'\xff\xd8'))
+        self.assertLess(len(payload), 1000000)
+        self.assertFalse(any(p.suffix.lower() in ('.tif', '.tiff') for p in self.output.rglob('*')))
         self.assertNotIn('freas-hall-temporary.jpg', source)
         self.assertFalse((self.output / 'assets/media/freas-hall-temporary.jpg').exists())
 
