@@ -159,6 +159,34 @@ class PublicSiteTests(unittest.TestCase):
                     linked.feed(resource.read_text())
                     self.assertIn(target.fragment, linked.ids)
 
+    def test_homepage_html_and_open_graph_titles_match(self):
+        class Head(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.in_title = False
+                self.title = ''
+                self.og_titles = []
+
+            def handle_starttag(self, tag, attrs):
+                attrs = dict(attrs)
+                if tag == 'title':
+                    self.in_title = True
+                if tag == 'meta' and attrs.get('property') == 'og:title':
+                    self.og_titles.append(attrs.get('content'))
+
+            def handle_endtag(self, tag):
+                if tag == 'title':
+                    self.in_title = False
+
+            def handle_data(self, text):
+                if self.in_title:
+                    self.title += text
+
+        parsed = Head()
+        parsed.feed((self.output / 'index.html').read_text())
+        self.assertEqual(parsed.title, 'Kaleb Eger | Personal Portfolio')
+        self.assertEqual(parsed.og_titles, [parsed.title])
+
     def test_build_has_no_retired_modules_or_private_content(self):
         for name in ('editor', 'editor_server.py', 'editor_store.py', 'editor_content.py',
                      'builder_design.py', 'content_management.py', 'concept-previews',
