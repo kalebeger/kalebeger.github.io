@@ -1,0 +1,110 @@
+/* Temporary concepts only. No styles are loaded by the main website. */
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100svh; display: flex; flex-direction: column; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+a { color: inherit; text-underline-offset: 6px; }
+button { font: inherit; }
+button,a { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid currentColor; outline-offset: 5px; }
+.skip-link { position: fixed; top: -100px; left: 20px; padding: 12px; z-index: 10; background: white; color: #222; }
+.skip-link:focus { top: 12px; }
+.site-header { position: sticky; top: 0; z-index: 5; }
+.header-inner { max-width: 1600px; margin: auto; padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+.wordmark { display: inline-flex; align-items: center; gap: 26px; font-size: 20px; font-weight: 700; letter-spacing: -.8px; text-decoration: none; white-space: nowrap; }
+.wordmark span { font-size: 26px; font-weight: 400; }
+.nav-list { list-style: none; display: flex; gap: 26px; padding: 0; margin: 0; }
+.nav-list a { display: block; padding: 12px 0; font-size: 12px; text-decoration: none; }
+.nav-list a:hover,.nav-list a[aria-current] { text-decoration: underline; }
+.menu-toggle { display: none; min-height: 44px; padding: 9px 14px; background: transparent; border: 1px solid currentColor; color: inherit; }
+main { width: 100%; max-width: 1600px; padding: 44px 48px; margin: 0 auto; flex: 1; display: grid; align-items: center; }
+section>*,.academic { min-width: 0; }
+h1 { margin: 0; }
+.introduction { font-size: 15px; line-height: 1.8; margin: 28px 0 18px; max-width: 570px; }
+.about-link { display: inline-flex; align-items: center; gap: 24px; min-height: 44px; font-size: 13px; }
+.about-link span { font-size: 22px; text-decoration: none; }
+.program { margin: 0 0 12px; font-size: 16px; line-height: 1.4; font-weight: 600; }
+.school { font-size: 12px; line-height: 1.65; margin: 0; }
+.portrait { margin: 0; min-width: 0; }
+.portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 70% center; }
+footer { margin: auto 48px 0; padding: 20px 0; display: flex; justify-content: space-between; gap: 24px; font-size: 11px; border-top: 1px solid; }
+/* A: poster typography, cobalt navigation and a coral photographic mount. */
+.studio { background: #f3f3eb; color: #202323; }
+.studio .site-header { background: #304de4; color: #fff; }
+.studio-composition { display: grid; grid-template-columns: minmax(0,1.4fr) minmax(0,.9fr); align-items: center; gap: 72px; }
+.studio h1 { font-size: clamp(100px,13.4vw,210px); font-weight: 800; line-height: .83; letter-spacing: -.085em; text-transform: uppercase; }
+.studio h1 span,.studio h1 em { display: block; }
+.studio h1 em { color: #304de4; font-style: normal; font-weight: 800; }
+.studio .introduction { margin-top: 40px; }
+.studio .about-link { font-weight: 600; }
+.studio .academic { border-top: 3px solid #202323; padding: 17px 0 24px; }
+.studio .program { max-width: 310px; }
+.studio .portrait { aspect-ratio: 4/5; position: relative; isolation: isolate; }
+.studio .portrait::before { content: ''; position: absolute; inset: 22px -20px -22px 22px; background: #ed9278; z-index: -1; }
+.studio footer { border-color: #c8cbc3; }
+/* B: expansive personal photography, plum type and a citron editorial frame. */
+.photography { color: #34283f; background: #efedf4; }
+.photography .site-header { background: #efedf4; border-bottom: 1px solid #d7d0df; }
+.photography .wordmark { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; }
+.photography .nav-list a[aria-current] { background: #34283f; color: #fff; border-radius: 30px; padding-left: 20px; padding-right: 20px; text-decoration: none; }
+.photography main { padding-top: 34px; padding-bottom: 34px; }
+.photo-composition { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,1fr); gap: 80px; align-items: center; }
+.photography .portrait { height: clamp(530px,calc(100svh - 200px),760px); position: relative; isolation: isolate; }
+.photography .portrait::before { content: ''; position: absolute; inset: -14px 24px 28px -16px; background: #d6e879; z-index: -1; }
+.photography .portrait img { border-radius: 100px 0 100px 0; }
+.photography h1 { font: 400 clamp(74px,7.8vw,124px)/.93 Georgia, 'Times New Roman', serif; letter-spacing: -.065em; margin-left: -22px; }
+.photography h1 span,.photography h1 em { display: block; }
+.photography h1 em { font-weight: 400; }
+.photography .academic { border-left: 5px solid #d6e879; padding-left: 18px; margin-top: 36px; }
+.photography .introduction { max-width: 440px; }
+.photography footer { border-color: #d7d0df; }
+@media(min-width:1600px) { footer { width: 1504px; margin-left: auto; margin-right: auto; } }
+@media(max-width:1100px) {
+  .header-inner { padding-left: 32px; padding-right: 32px; }
+  main { padding: 36px 32px; }
+  footer { margin-left: 32px; margin-right: 32px; }
+  .nav-list { gap: 18px; }
+  .studio-composition { gap: 44px; grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); }
+  .studio h1 { font-size: clamp(100px,12.6vw,150px); }
+  .photo-composition { gap: 48px; grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+  .photography h1 { margin-left: 0; }
+}
+@media(max-width:800px) {
+  .header-inner { padding: 16px 24px; flex-wrap: wrap; gap: 12px; }
+  .wordmark { font-size: 19px; }
+  .menu-toggle { display: inline-flex; align-items: center; gap: 16px; }
+  #main-nav { display: none; width: 100%; }
+  #main-nav.is-open { display: block; }
+  .nav-list { flex-wrap: wrap; gap: 0 24px; }
+  .nav-list a { padding: 14px 0; }
+  main { padding: 36px 24px; }
+  footer { margin-left: 24px; margin-right: 24px; }
+  .studio-composition { gap: 32px; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); }
+  .studio h1 { font-size: clamp(84px,12vw,100px); }
+  .studio .introduction { font-size: 14px; margin-top: 28px; }
+  .studio .portrait::before { inset: 14px -12px -14px 14px; }
+  .photo-composition { grid-template-columns: 1fr; gap: 36px; }
+  .photography .portrait { height: auto; aspect-ratio: 5/4; }
+  .photography .portrait img { border-radius: 70px 0 70px 0; object-position: 65% 38%; }
+  .photography h1 { font-size: clamp(84px,13vw,112px); }
+  .photography h1 span,.photography h1 em { display: inline; }
+  .photography .academic { margin-top: 24px; }
+  .photography .introduction { max-width: 600px; }
+}
+@media(max-width:600px) {
+  .header-inner { padding-left: 22px; padding-right: 22px; }
+  main { padding: 32px 22px 42px; }
+  footer { margin-left: 22px; margin-right: 22px; }
+  .studio-composition { grid-template-columns: 1fr; gap: 32px; }
+  .studio h1 { font-size: clamp(90px,22vw,132px); }
+  .studio .introduction { margin-top: 28px; font-size: 15px; }
+  .studio .portrait { aspect-ratio: 5/4; }
+  .studio .portrait img { object-position: 66% 38%; }
+  .studio .program { max-width: none; }
+  .photography main { padding: 32px 22px; }
+  .photography .portrait { aspect-ratio: 4/5; }
+  .photography .portrait::before { inset: -12px 18px 22px -10px; }
+  .photography .portrait img { border-radius: 60px 0 60px 0; }
+  .photography h1 { font-size: clamp(72px,20vw,102px); }
+  .photography h1 span,.photography h1 em { display: block; }
+  .photography .program { font-size: 16px; }
+}
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } }

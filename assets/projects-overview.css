@@ -1,0 +1,42 @@
+/* Main Projects page only. Dedicated project pages keep their existing design. */
+.page-projects .projects-heading { display: block; border-bottom: 3px solid var(--accent); }
+.page-projects .projects-heading h1 em { font-weight: 400; color: var(--accent); }
+.portfolio-project { display: grid; grid-template-columns: minmax(0,1.25fr) minmax(0,1fr); gap: clamp(32px,4vw,56px); align-items: center; padding: 48px 32px; border-bottom: 1px solid var(--line); }
+.portfolio-project-writing,.portfolio-project-visuals { min-width: 0; }
+.portfolio-project-writing>header { display: grid; grid-template-columns: 30px minmax(0,1fr); gap: 16px; align-items: baseline; margin-bottom: 24px; }
+.overview-number { color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: 1.5px; }
+.portfolio-project h2 { margin: 0; font-size: clamp(30px,2.7vw,40px); text-wrap: balance; line-height: 1.15; }
+.portfolio-project-copy p { margin: 0 0 24px; font: 400 16px/1.8 var(--sans); color: #414a58; }
+.portfolio-project-copy p:last-child { margin-bottom: 0; }
+.overview-link { margin-top: 20px; color: var(--accent); }
+.portfolio-project-visuals { display: grid; gap: 14px; }
+.overview-image { margin: 0; min-width: 0; }
+.overview-image img { display: block; width: 100%; height: auto; }
+/* Natural proportions keep every character and the entire logo visible. */
+.overview-image-screenshot { border: 1px solid var(--line); background: var(--white); padding: 6px; border-radius: 20px 0 20px 0; }
+.overview-image-screenshot img { object-fit: contain; }
+.overview-image-logo { order: 2; width: clamp(80px,7vw,100px); justify-self: start; }
+.overview-image-logo img { object-fit: contain; }
+.overview-image-ceremony { order: 1; width: 100%; }
+.overview-image-ceremony img { object-fit: contain; border-radius: 28px 0 28px 0; }
+/* Anchor the scholarship badge over the quiet curtain area, clear of the speaker. */
+.portfolio-project:nth-child(2) .portfolio-project-visuals { position: relative; display: block; }
+.portfolio-project:nth-child(2) .overview-image-logo { position: absolute; top: 12px; right: 12px; width: clamp(64px,6vw,84px); padding: 4px; background: var(--paper); border: 1px solid var(--line); border-radius: 4px; z-index: 1; }
+@media(min-width:801px) {
+  .portfolio-project:first-child { grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); }
+  .portfolio-project:nth-child(even) { grid-template-columns: minmax(0,1fr) minmax(0,1.25fr); }
+  .portfolio-project:nth-child(even) .portfolio-project-writing { grid-column: 2; grid-row: 1; }
+  .portfolio-project:nth-child(even) .portfolio-project-visuals { grid-column: 1; grid-row: 1; }
+}
+@media(max-width:1100px) { .portfolio-project { padding: 36px 24px; gap: 32px; } }
+@media(max-width:800px) {
+  .portfolio-project { grid-template-columns: 1fr; padding: 32px 24px; gap: 28px; }
+  .portfolio-project-visuals { max-width: 640px; width: 100%; }
+  .overview-image-ceremony { max-width: 540px; }
+  .portfolio-project:nth-child(2) .portfolio-project-visuals { max-width: 540px; }
+}
+@media(max-width:600px) {
+  .portfolio-project { padding: 28px 18px; }
+  .portfolio-project-writing>header { grid-template-columns: 24px minmax(0,1fr); gap: 12px; }
+  .portfolio-project h2 { font-size: 30px; }
+}

@@ -1,0 +1,65 @@
+/* Dedicated Oddfellows case study; independent of the Projects overview. */
+.oddfellows-case-study { padding-top: 24px; }
+.case-topline { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.case-topline .badge { font-size: 11px; }
+.case-heading { display: grid; grid-template-columns: minmax(0,1.4fr) minmax(0,.7fr); gap: 0 48px; align-items: end; padding: 38px 0 40px; }
+.case-heading .eyebrow { grid-column: 1/-1; }
+.refined .case-heading h1 { margin: 0; font: 400 clamp(60px,7vw,104px)/1.06 var(--serif); letter-spacing: -.065em; }
+.case-heading h1 em { display: inline; }
+.case-heading>p:last-child { margin: 24px 0 0; font: italic 400 clamp(20px,2vw,27px)/1.5 var(--serif); color: var(--muted); }
+.case-image { margin: 0; min-width: 0; }
+.case-image>a { display: block; padding: 10px; background: #fbfcfe; border: 1px solid var(--line); border-radius: 24px 0 24px 0; overflow: hidden; }
+.case-image>a:hover { border-color: var(--accent); }
+.case-image>a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+.case-image img { display: block; width: 100%; height: auto; }
+.case-image figcaption { display: flex; justify-content: space-between; gap: 12px; padding-top: 12px; color: var(--muted); font-size: 11px; line-height: 1.6; }
+.case-image figcaption span { color: var(--accent); }
+.case-image-crew { width: 80%; margin: 0 auto 40px; }
+.case-image-crew>a { border-top: 4px solid var(--accent); }
+.case-chapter { border-top: 1px solid var(--line); padding: 48px 0; }
+.case-section-heading { display: grid; grid-template-columns: 30px minmax(0,1fr); gap: 16px; align-items: baseline; margin-bottom: 32px; }
+.case-number { color: var(--accent); font: 600 11px/1.5 var(--sans); }
+.case-section-heading h2 { margin: 0; font-size: clamp(30px,3vw,42px); text-wrap: balance; }
+.case-body { padding-left: 46px; min-width: 0; }
+.case-copy { min-width: 0; max-width: 740px; }
+.case-copy p { margin: 0 0 22px; font: 400 16px/1.8 var(--sans); color: #414a58; }
+.case-copy p:last-child { margin-bottom: 0; }
+.case-split { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.1fr); gap: 48px; align-items: start; }
+.case-reverse { grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); }
+.case-reverse .case-copy { grid-column: 2; grid-row: 1; }
+.case-reverse>.case-image { grid-column: 1; grid-row: 1; }
+.case-lessons { margin: 40px 0 0 46px; border-top: 1px solid var(--line); }
+.case-example { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr); gap: 48px; align-items: center; padding: 40px 0; }
+.case-example+.case-example { border-top: 1px solid var(--line); padding-bottom: 0; }
+.case-support-copy h3 { color: var(--accent); margin: 0 0 26px; font-size: clamp(30px,3vw,42px); text-wrap: balance; }
+.case-example-reverse { grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); }
+.case-example-reverse .case-support-copy { grid-column: 2; grid-row: 1; }
+.case-example-reverse .case-image { grid-column: 1; grid-row: 1; width: 100%; }
+.case-example .case-image-marketing { max-width: 400px; justify-self: center; }
+.case-example .case-image-progression { max-width: 480px; justify-self: center; }
+@media(min-width:801px) {
+  .case-example .case-image-activity { width: 80.75%; justify-self: center; }
+  .case-example.case-example-reverse .case-image-marketing { width: 76%; max-width: 304px; }
+  .case-example .case-image-progression { width: 80.75%; max-width: 387.6px; }
+}
+@media(max-width:1100px) {
+  .case-split { gap: 28px; }
+  .case-body { padding-left: 0; }
+  .case-lessons { margin-left: 0; }
+  .case-example { gap: 28px; }
+}
+@media(max-width:800px) {
+  .case-split,.case-reverse,.case-example { grid-template-columns: minmax(0,1fr); gap: 28px; }
+  .case-example-reverse .case-support-copy,.case-example-reverse .case-image { grid-column: auto; grid-row: auto; }
+  .case-example { padding-top: 28px; padding-bottom: 28px; }
+  .case-reverse .case-copy,.case-reverse>.case-image { grid-column: auto; grid-row: auto; }
+  .case-heading { padding: 28px 0; }
+  .case-heading { grid-template-columns: 1fr; }
+  .case-chapter { padding: 32px 0; }
+  .case-image-crew { width: 100%; margin-bottom: 32px; }
+  .case-section-heading { margin-bottom: 24px; }
+  .case-lessons { margin-top: 28px; }
+  .case-image>a,.case-image-crew>a { padding: 6px; border-radius: 20px 0; }
+  .case-lessons .case-image-marketing { width: 100%; max-width: 460px; justify-self: center; }
+  .case-topline { flex-wrap: wrap; gap: 8px 20px; }
+}

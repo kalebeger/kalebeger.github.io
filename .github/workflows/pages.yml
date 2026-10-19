@@ -1,0 +1,51 @@
+name: Portfolio Pages (manual, publication disabled)
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish only after photo permissions and launch approval
+        type: boolean
+        required: true
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: portfolio-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      # ubuntu-latest includes Python 3; this site uses only its standard library.
+      - name: Production regression tests
+        run: python3 -B -m unittest test_public_site
+      - name: Build a clean public artifact
+        run: python3 -B prepare_public.py dist
+      - name: Verify generated routes and links
+        run: python3 -B check.py --no-build
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  deploy:
+    # Two explicit gates. This repository variable is NOT enabled by this change.
+    if: ${{ vars.PORTFOLIO_PUBLISH_ENABLED == 'true' && inputs.publish }}
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - name: Publish approved artifact
+        id: deployment
+        uses: actions/deploy-pages@v4

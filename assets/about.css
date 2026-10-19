@@ -1,0 +1,54 @@
+/* Approved biography: text-led sections, with authentic photography where relevant. */
+.page-about .about-heading { display: block; padding-bottom: 38px; border-bottom: 3px solid var(--accent); }
+.page-about .about-heading h1 { max-width: none; }
+.page-about .about-heading h1 em { color: var(--accent); font-weight: 400; }
+.about-biography { padding: 16px 0 0; }
+.about-chapter { padding: 44px 32px; background: transparent; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; }
+.about-chapter.has-photo { display: grid; grid-template-columns: minmax(0,1.4fr) minmax(0,1fr); gap: clamp(32px,4vw,56px); align-items: center; }
+.chapter-writing { min-width: 0; max-width: 760px; }
+.chapter-writing>header { display: grid; grid-template-columns: 30px minmax(0,1fr); gap: 16px; align-items: baseline; }
+.chapter-number { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: var(--accent); }
+.about-chapter h2 { margin: 0; font-size: clamp(28px,2.5vw,36px); line-height: 1.2; text-wrap: balance; }
+.chapter-copy { margin-top: 24px; min-width: 0; }
+.chapter-copy p { margin: 0 0 24px; color: #414a58; font: 400 16px/1.8 var(--sans); letter-spacing: normal; }
+.chapter-copy p:last-child { margin-bottom: 0; }
+.chapter-photo { margin: 0; min-width: 0; width: 100%; }
+.chapter-photo img { display: block; width: 100%; height: auto; }
+.chapter-photo .photo-credit { margin-top: 10px; color: var(--muted); font: 400 11px/1.6 var(--sans); }
+.chapter-photo-panel img { aspect-ratio: 4/5; object-fit: cover; object-position: 45% center; border-radius: 40px 0 40px 0; }
+/* A near-original landscape frame keeps both graduates and the ceremony visible. */
+.chapter-photo-graduation .chapter-photo-frame { position: relative; aspect-ratio: 3/2; overflow: hidden; border-radius: 40px 0 40px 0; }
+.chapter-photo-graduation img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% center; transform: scale(1.15); transform-origin: 50% 24%; }
+/* The entire group is shown at its natural proportions, with no cropping. */
+.chapter-photo-group img,.chapter-photo-landscape img { object-fit: contain; }
+/* Preserve both people and the Holmes Hall setting at the original aspect ratio. */
+.chapter-photo-conversation img { object-fit: contain; border-radius: 40px 0 40px 0; }
+/* Alternate photographed even sections; keep text first in the reading/mobile order. */
+@media(min-width:801px) {
+  .about-chapter:nth-child(even).has-photo { grid-template-columns: minmax(0,1fr) minmax(0,1.4fr); }
+  .about-chapter:nth-child(even).has-photo .chapter-writing { grid-column: 2; grid-row: 1; }
+  .about-chapter:nth-child(even).has-photo .chapter-photo { grid-column: 1; grid-row: 1; }
+}
+@media(max-width:1100px) {
+  .about-chapter { padding: 36px 24px; }
+  .about-chapter.has-photo { grid-template-columns: minmax(0,1.3fr) minmax(0,1fr); gap: 32px; }
+}
+@media(min-width:801px) and (max-width:1100px) {
+  .about-chapter:nth-child(even).has-photo { grid-template-columns: minmax(0,1fr) minmax(0,1.3fr); }
+}
+@media(max-width:800px) {
+  .about-chapter { padding: 32px 24px; }
+  .about-chapter.has-photo { grid-template-columns: 1fr; gap: 28px; }
+  .chapter-writing { max-width: none; }
+  .chapter-photo { max-width: 600px; }
+  .chapter-photo-panel,.chapter-photo-graduation { max-width: 440px; }
+}
+@media(max-width:600px) {
+  .page-about .about-heading { padding-bottom: 24px; }
+  .about-chapter { padding: 28px 18px; }
+  .chapter-writing>header { grid-template-columns: 24px minmax(0,1fr); gap: 12px; }
+  .about-chapter h2 { font-size: 28px; }
+  .chapter-photo-panel img { aspect-ratio: 1; border-radius: 28px 0 28px 0; }
+  .chapter-photo-graduation .chapter-photo-frame { border-radius: 28px 0 28px 0; }
+  .chapter-photo-conversation img { border-radius: 28px 0 28px 0; }
+}
